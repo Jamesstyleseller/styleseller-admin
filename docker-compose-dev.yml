@@ -1,0 +1,16 @@
+version: '3'
+services:
+  admin-dev:
+    container_name: admin-frontend-dev
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3001:3000'
+    volumes:
+      - /usr/src/app/node_modules
+      - ./:/usr/src/app
+    stdin_open: true
+    environment:
+      - NODE_ENV=development

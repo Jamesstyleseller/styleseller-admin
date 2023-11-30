@@ -1,0 +1,16 @@
+version: '3'
+services:
+  admin:
+    container_name: admin-frontend
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.prd
+    ports:
+      - '80:80'
+    volumes:
+      - /usr/src/app/node_modules
+      - ./:/usr/src/app
+    stdin_open: true
+    environment:
+      - NODE_ENV=production
